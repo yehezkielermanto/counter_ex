@@ -1,3 +1,7 @@
+<?php
+include 'conn/conn.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,18 +25,32 @@
     </div>
 
     <script type="text/javascript">
-        function checkTrigger() {
-            const numberDisplayed = localStorage.getItem('counter');
-            if (numberDisplayed) {
-                document.getElementById('current_number').innerText = numberDisplayed;
-            }
+        function sendAJAXRequest() {
+            // Create a new XMLHttpRequest object
+            const xhr = new XMLHttpRequest();
+            // URL of the PHP file with query parameters
+            const url = "/conn/getData.php";
+
+            // Configure the GET request
+            xhr.open("GET", url, true);
+
+            // Callback function when request completes
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Update the content with the server response
+                    document.getElementById("current_number").innerHTML = xhr.responseText;
+                }
+            };
+
+            // Send the GET request
+            xhr.send();
         }
 
         // Run the check on page load
-        checkTrigger();
+        setInterval(sendAJAXRequest, 1000);
 
         // Optionally, check for changes to localStorage
-        window.addEventListener('storage', checkTrigger);
+        // window.addEventListener('storage', checkTrigger);
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
