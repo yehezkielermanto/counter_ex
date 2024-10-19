@@ -60,7 +60,7 @@ include 'conn/conn.php';
         }
 
         // Run the check on page load
-        setInterval(sendAJAXRequest, 3000);
+        setInterval(sendAJAXRequest, 2000);
 
         // Optionally, check for changes to localStorage
         // window.addEventListener('storage', checkTrigger);
