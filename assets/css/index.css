@@ -2,6 +2,24 @@
     overflow-x: hidden;
 }
 
+#content-main{
+    height: 100vh;
+    width: 100vw;
+    background-image: url('/assets/images/social-share-seo-hayesod.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#btn-full{
+    margin-right: 20px; 
+    margin-top:10px; 
+    position:fixed; 
+    top:0; 
+    right:0;
+    cursor: pointer;
+}
+
 .bg-main{
     background-image: url('/assets/images/social-share-seo-hayesod.webp');
     background-size: cover;
